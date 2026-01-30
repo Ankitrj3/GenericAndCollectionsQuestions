@@ -41,6 +41,6 @@ public class Program
     public static void Main()
     {
         FlipKey c = new FlipKey();
-        Console.WriteLine(c.CleanseAndInvert("Ankitranjanrock"));
+        Console.WriteLine(c.CleanseAndInvert("abcdef"));
     }
 }
