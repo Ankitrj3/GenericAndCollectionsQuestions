@@ -38,6 +38,11 @@
             int [] arr4 ={1,0,0,23,2,5,0,6};
             MoveZeros mz = new MoveZeros();
             mz.moveZeros(arr4);
+
+            string a = "ankit";
+            string b = "tiknn";
+            AnagramCheck anagram = new AnagramCheck();
+            Console.WriteLine(anagram.CheckAnagram(a,b));
         }
         public static void DeleteDuplicateElement(int[] arr)
         {

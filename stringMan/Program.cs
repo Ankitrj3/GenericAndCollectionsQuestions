@@ -1,0 +1,85 @@
+﻿// A linguistics trainer is teaching students how to compare two words based on their common letters.
+// To test their understanding, she gives them a challenge:
+// Given two words:
+// Identify the common characters between the two words (case-sensitive)
+// Count how many characters must be removed from the first word so that it contains only those common characters
+// Two students, Sam and John, want to complete the task efficiently, and they ask for your help.
+// Your job is to determine how many deletions are required from word1.
+// Functionality Required
+// Write a program that:
+// Takes two words from the user
+// Finds characters that are not common between the two words
+// Counts how many characters must be deleted from word1
+// Prints this number
+// Example 1
+// Input
+// word1 = sea
+// word2 = eat
+// Process
+// Common letters between both words: e, a
+// Characters in word1 but NOT common: s → must be removed
+// Characters in word2 don't matter for removal count.
+// Output
+// 2
+// (1 character removed from word1 + 1 character from word2?
+// or simply total mismatched count across both words — but your example shows sum of mismatches across both strings is counted.)
+// Example 2
+// Input
+// word1 = leetcode
+// word2 = etco
+// Process
+// Common letters: e, t, c, o
+// Letters in word1 that must be removed: l, e, d, e → 4 removals
+// Output
+// 4
+using System.Security.Cryptography;
+
+public class Program
+{
+    public static void Main()
+    {
+        Console.WriteLine("Enter Word 1:");
+        string s1 = Console.ReadLine();
+
+        Console.WriteLine("Enter Word 2:");
+        string s2 = Console.ReadLine();
+
+        // HashSet<char> set = new HashSet<char>(s2);
+        // int count = 0;
+        // HashSet<char> set1 = new HashSet<char>();
+        // int count1 = 0;
+        // foreach(var i in s1)
+        // {
+        //     if (!set.Contains(i))
+        //     {
+        //         count++;
+        //     }
+        //     if (set.Contains(i))
+        //     {
+        //         set1.Add(i);
+        //         count1++;
+        //     }   
+        // }
+        // Console.WriteLine(count1-count);
+        int i = 0;
+        int j = 0;
+        char[] arr = s1.ToCharArray();
+        char[] arr1 = s2.ToCharArray();
+        int deleteCount = 0;
+        while(i < arr.Length && j < arr1.Length)
+        {
+            if(arr[i] == arr1[j])
+            {
+                i++;
+                j++;
+            }
+            else
+            {
+                deleteCount++;
+                i++;
+            }
+        }
+        deleteCount += arr.Length - i;
+        Console.WriteLine(deleteCount);
+    }
+}
