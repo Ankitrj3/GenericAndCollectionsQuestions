@@ -916,3 +916,39 @@ public class HelloWorld
         Console.WriteLine(MostFrequentChar(str));
     }
 }
+// 28.
+// Online C# Editor for free
+// Write, Edit and Run your C# code using C# Online Compiler
+// Detect consecutive duplicate characters.
+using System;
+
+public class HelloWorld
+{
+    public static string DetectDuplicate(string str)
+    {
+        if (string.IsNullOrEmpty(str) || str.Length < 2)
+            return "";
+
+        int left = 0;
+        int right = 1;
+        string res = "";
+
+        while (right < str.Length)
+        {
+            if (str[left] == str[right])
+            {
+                res += str[left];
+            }
+            left++;
+            right++;
+        }
+        return res;
+    }
+
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Enter The String");
+        string str = Console.ReadLine();
+        Console.WriteLine(DetectDuplicate(str));
+    }
+}
