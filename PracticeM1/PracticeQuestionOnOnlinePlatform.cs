@@ -849,3 +849,32 @@ public class HelloWorld
         Console.WriteLine(RemoveVowels(read));
     }
 }
+
+// 26.
+// Online C# Editor for free
+// Write, Edit and Run your C# code using C# Online Compiler
+// Toggle case using only char APIs
+
+using System;
+using System.Collections.Generic;
+public class HelloWorld
+{
+    public static string ToggleCase(string str){
+        string res = "";
+        foreach(var i in str){
+            if(char.IsUpper(i)){
+                res += char.ToLower(i);
+            }else if(char.IsLower(i)){
+                res += char.ToUpper(i);
+            }
+        }
+        return res;
+    }
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Enter the String : ");
+        string str = Console.ReadLine();
+        
+        Console.WriteLine(ToggleCase(str));
+    }
+}
