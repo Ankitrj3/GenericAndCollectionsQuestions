@@ -878,3 +878,41 @@ public class HelloWorld
         Console.WriteLine(ToggleCase(str));
     }
 }
+
+// 27.
+// Online C# Editor for free
+// Write, Edit and Run your C# code using C# Online Compiler
+// Most frequent character
+
+using System;
+using System.Collections.Generic;
+
+public class HelloWorld
+{
+    public static char MostFrequentChar(string str){
+        Dictionary<char,int> map = new Dictionary<char,int>();
+        foreach(var i in str){
+            if(map.ContainsKey(i)){
+                map[i]++;
+            }else{
+                map[i] = 1;
+            }
+        }
+        int max = int.MinValue;
+        char j = '\0';
+        foreach(var i in map){
+            if(max < i.Value){
+                max = i.Value;
+                j = i.Key;
+            }
+        }
+        return j;
+    }
+    public static void Main(string[] args)
+    {
+        Console.WriteLine ("Enter the String");
+        string str = Console.ReadLine();
+        
+        Console.WriteLine(MostFrequentChar(str));
+    }
+}
