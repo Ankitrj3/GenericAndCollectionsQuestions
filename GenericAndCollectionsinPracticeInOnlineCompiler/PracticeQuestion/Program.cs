@@ -409,3 +409,66 @@ public class HelloWorld
         Console.WriteLine(MostFrequent(freq));
     }
 }
+
+// Online C# Editor for free
+// Write, Edit and Run your C# code using C# Online Compiler
+
+// 9
+// Movie Booking – Seat Allocation
+// Focus:
+// Sorted availability
+// SortedSet
+// Scenario: Seats are numbered 1..N. Some seats are booked. Allocate the lowest available seat per request.
+
+// Input
+// int n, List<int> alreadyBooked, int requestCount
+// Output
+// List<int> allocatedSeats
+// Always allocate the lowest available seat.
+// If seats run out, return -1 for remaining requests.
+// Use a sorted structure (example: SortedSet<int> of available seats).
+
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+public class HelloWorld
+{
+    public static List<int> AllocatedSeat(int n, List<int> alreadyBook, int requestCount){
+        SortedSet<int> set = new SortedSet<int>(alreadyBook);
+        List<int> res = new List<int>();
+        
+        for(int i=1;i<=n;i++){
+            if(!set.Contains(i)){
+                res.Add(i);
+                set.Add(i);
+                requestCount--;
+            }
+        }
+        if(requestCount > 0){
+            res.Add(-1);
+        }
+        return res;
+    }
+    public static void Main(string[] args)
+    {
+        List<int> alreadyBook = new List<int>();
+        Console.WriteLine("Enter the Total Number of Seats");
+        int n = int.Parse(Console.ReadLine());
+        
+        Console.WriteLine("Enter the Already Book Seat by Spaces");
+        string alreadyBook1 = Console.ReadLine();
+        string[] arr = alreadyBook1.Split(" ");
+        foreach(var i in arr){
+            alreadyBook.Add(int.Parse(i));
+        }
+        Console.WriteLine("Enter Number of Seats You want to Book");
+        int requestCount = int.Parse(Console.ReadLine());
+        
+        List<int> res = AllocatedSeat(n,alreadyBook,requestCount);
+        
+        foreach(var i in res){
+            Console.WriteLine(i);
+        }
+    }
+}
