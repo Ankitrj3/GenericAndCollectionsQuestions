@@ -413,6 +413,9 @@ public class HelloWorld
 // Online C# Editor for free
 // Write, Edit and Run your C# code using C# Online Compiler
 
+// Online C# Editor for free
+// Write, Edit and Run your C# code using C# Online Compiler
+
 // 9
 // Movie Booking – Seat Allocation
 // Focus:
@@ -435,19 +438,20 @@ using System.Collections.Generic;
 public class HelloWorld
 {
     public static List<int> AllocatedSeat(int n, List<int> alreadyBook, int requestCount){
-        SortedSet<int> set = new SortedSet<int>(alreadyBook);
+        
         List<int> res = new List<int>();
         
         for(int i=1;i<=n;i++){
-            if(!set.Contains(i)){
+            if(!alreadyBook.Contains(i) && requestCount > 0){
                 res.Add(i);
-                set.Add(i);
                 requestCount--;
             }
         }
-        if(requestCount > 0){
+        
+        while(requestCount-- > 0){
             res.Add(-1);
         }
+
         return res;
     }
     public static void Main(string[] args)
