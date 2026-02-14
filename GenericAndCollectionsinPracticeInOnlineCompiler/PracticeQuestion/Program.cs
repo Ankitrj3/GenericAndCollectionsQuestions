@@ -362,3 +362,50 @@ public class Program
         Console.WriteLine(QueueProcessing(q));
     }
 }
+
+// Online C# Editor for free
+// Write, Edit and Run your C# code using C# Online Compiler
+
+// 10
+// Log Analyzer – Most Frequent Error Code
+// Focus:
+// Frequency + tie-break
+// Dictionary frequency
+// Scenario: Server logs contain error codes. Find the most frequent; if tie, choose lexicographically smallest.
+
+// Input
+// List<string> codes
+// Output
+// string result
+// Return the code with highest frequency.
+// If tie, return the smallest code (lexicographic order).
+// Example:
+// ["E02","E01","E02","E01","E03"]  => "E01"
+
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+public class HelloWorld
+{
+    public static string MostFrequent(List<string> codes){
+        var dict = codes.GroupBy(s => s)
+                        .ToDictionary(s => s.Key, s => s.Count());
+        int max = dict.Values.Max();
+        
+        return dict.Where(s => s.Value == max)
+                   .OrderBy(s => s.Key)
+                   .First()
+                   .Key;
+    }
+    public static void Main(string[] args)
+    {
+        List<string> freq = new List<string>();
+        freq.Add("E02");
+        freq.Add("E01");
+        freq.Add("E02");
+        freq.Add("E01");
+        freq.Add("E03");
+        Console.WriteLine(MostFrequent(freq));
+    }
+}
